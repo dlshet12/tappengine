@@ -57,7 +57,7 @@ class _CustomButtonState extends State<CustomButton> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: widget.isLoading
                       ? Colors.grey[400] // Temporary disabled color
-                      : const Color.fromARGB(255, 29, 40, 102),
+                      : const Color.fromARGB(255, 73, 91, 193),
                   foregroundColor: Colors.white,
                   padding: EdgeInsets.symmetric(vertical: 12),
                   shape: RoundedRectangleBorder(
@@ -79,10 +79,10 @@ class _CustomButtonState extends State<CustomButton> {
                 onPressed: widget.onPressed,
                 style: OutlinedButton.styleFrom(
                   side: BorderSide(
-                    color: const Color.fromARGB(255, 29, 40, 102),
+                    color: const Color.fromARGB(255, 87, 101, 183),
                     width: 2,
                   ),
-                  foregroundColor: const Color.fromARGB(255, 29, 40, 102),
+                  foregroundColor: const Color.fromARGB(255, 93, 108, 194),
                   padding: EdgeInsets.symmetric(vertical: 12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(4),
