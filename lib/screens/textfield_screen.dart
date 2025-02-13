@@ -57,7 +57,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
             TextFormField(
               controller: numberController,
               keyboardType: TextInputType.number,
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.start,
               decoration: InputDecoration(
                 labelText: "Quantity",
                 border: OutlineInputBorder(),
