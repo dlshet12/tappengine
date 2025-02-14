@@ -7,6 +7,9 @@ import '../widgets/custom_radio.dart';
 import '../widgets/custom_textarea.dart';
 import '../widgets/theme_provider.dart';
 import './textfield_screen.dart';
+import './select_screen.dart';
+import '../screens/tabs_screen.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -109,15 +112,36 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(height: 20),
 
-     // With this
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TextFieldScreen()),
+                );
+              },
+              child: Text("Go to TextField"),
+            ),
+            SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SelectScreen()),
+                );
+              },
+              child: Text("Go to Select Screen"),
+            ),
+
+
 ElevatedButton(
   onPressed: () {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => TextFieldScreen()),
+      MaterialPageRoute(builder: (context) => TabsScreen()),
     );
   },
-  child: Text("Go to TextField"),
+  child: Text("Go to Tabs Screen"),
 ),
           ],
         ),
