@@ -110,39 +110,44 @@ class _HomeScreenState extends State<HomeScreen> {
                 });
               },
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 40), // Extra spacing before navigation buttons
 
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => TextFieldScreen()),
-                );
-              },
-              child: Text("Go to TextField"),
+            // Navigation Buttons with Equal Spacing
+            SizedBox(
+              height: 180, // Fixed height to distribute buttons evenly
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => TextFieldScreen()),
+                      );
+                    },
+                    child: Text("Go to TextField"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SelectScreen()),
+                      );
+                    },
+                    child: Text("Go to Select Screen"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => TabsScreen()),
+                      );
+                    },
+                    child: Text("Go to Tabs Screen"),
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: 20),
-
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SelectScreen()),
-                );
-              },
-              child: Text("Go to Select Screen"),
-            ),
-
-
-ElevatedButton(
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => TabsScreen()),
-    );
-  },
-  child: Text("Go to Tabs Screen"),
-),
           ],
         ),
       ),
