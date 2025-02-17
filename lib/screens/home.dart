@@ -9,6 +9,7 @@ import '../widgets/theme_provider.dart';
 import './textfield_screen.dart';
 import './select_screen.dart';
 import '../screens/tabs_screen.dart';
+import '../screens/modal.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -50,107 +51,116 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+   body: SingleChildScrollView(
+  child: Column(
+    children: [
+      CustomButton(
+        label: "Next",
+        onPressed: handleClick,
+        isLoading: isLoading,
+        variant: ButtonVariant.filled,
+      ),
+      SizedBox(height: 20),
+
+      CustomButton(
+        label: "Cancel",
+        onPressed: () {},
+        variant: ButtonVariant.outlined,
+      ),
+      SizedBox(height: 20),
+
+      CustomToggle(
+        value: isToggled,
+        onChanged: (value) {
+          setState(() {
+            isToggled = value;
+          });
+        },
+      ),
+      SizedBox(height: 20),
+
+      CustomTabs(
+        tabs: ["Tab 1", "Tab 2", "Tab 3"],
+        selectedIndex: selectedTab,
+        onTabSelected: (index) {
+          setState(() {
+            selectedTab = index;
+          });
+        },
+      ),
+      SizedBox(height: 20),
+
+      CustomRadio(
+        label: "Option 1",
+        value: "Option 1",
+        groupValue: selectedRadio,
+        onChanged: (value) {
+          setState(() {
+            selectedRadio = value!;
+          });
+        },
+      ),
+      CustomRadio(
+        label: "Option 2",
+        value: "Option 2",
+        groupValue: selectedRadio,
+        onChanged: (value) {
+          setState(() {
+            selectedRadio = value!;
+          });
+        },
+      ),
+      SizedBox(height: 40), // Extra spacing before navigation buttons
+
+      // Wrapping navigation buttons inside a flexible container
+      Container(
+        height: MediaQuery.of(context).size.height * 0.3, // 30% of screen height
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Equal spacing
           children: [
-            CustomButton(
-              label: "Next",
-              onPressed: handleClick,
-              isLoading: isLoading,
-              variant: ButtonVariant.filled,
-            ),
-            SizedBox(height: 20),
-
-            CustomButton(
-              label: "Cancel",
-              onPressed: () {},
-              variant: ButtonVariant.outlined,
-            ),
-            SizedBox(height: 20),
-
-            CustomToggle(
-              value: isToggled,
-              onChanged: (value) {
-                setState(() {
-                  isToggled = value;
-                });
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TextFieldScreen()),
+                );
               },
+              child: Text("Go to TextField"),
             ),
-            SizedBox(height: 20),
-
-            CustomTabs(
-              tabs: ["Tab 1", "Tab 2", "Tab 3"],
-              selectedIndex: selectedTab,
-              onTabSelected: (index) {
-                setState(() {
-                  selectedTab = index;
-                });
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SelectScreen()),
+                );
               },
+              child: Text("Go to Select Screen"),
             ),
-            SizedBox(height: 20),
-
-            CustomRadio(
-              label: "Option 1",
-              value: "Option 1",
-              groupValue: selectedRadio,
-              onChanged: (value) {
-                setState(() {
-                  selectedRadio = value!;
-                });
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TabsScreen()),
+                );
               },
+              child: Text("Go to Tabs Screen"),
             ),
-            CustomRadio(
-              label: "Option 2",
-              value: "Option 2",
-              groupValue: selectedRadio,
-              onChanged: (value) {
-                setState(() {
-                  selectedRadio = value!;
-                });
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ModalScreen()),
+                );
               },
-            ),
-            SizedBox(height: 40), // Extra spacing before navigation buttons
-
-            // Navigation Buttons with Equal Spacing
-            SizedBox(
-              height: 180, // Fixed height to distribute buttons evenly
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => TextFieldScreen()),
-                      );
-                    },
-                    child: Text("Go to TextField"),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SelectScreen()),
-                      );
-                    },
-                    child: Text("Go to Select Screen"),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => TabsScreen()),
-                      );
-                    },
-                    child: Text("Go to Tabs Screen"),
-                  ),
-                ],
-              ),
+              child: Text("Show All Modals"),
             ),
           ],
         ),
       ),
+    ],
+  ),
+),
+
     );
   }
 }
