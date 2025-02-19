@@ -10,7 +10,7 @@ import './textfield_screen.dart';
 import './select_screen.dart';
 import '../screens/tabs_screen.dart';
 import '../screens/modal.dart';
-
+import '../screens/chat_screen.dart';
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -154,6 +154,17 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               child: Text("Show All Modals"),
             ),
+
+            ElevatedButton(
+  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ChatScreen()),
+    );
+  },
+  child: Text("Go to Chat"),
+),
+
           ],
         ),
       ),
